@@ -18,11 +18,16 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href='{% url 'about' %}'>About</a>
-        <a class="nav-item nav-link" href="#">LogIn</a>
+    <div class="collapse navbar-collapse mr-auto" id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto" >
+    <ul class="navbar-nav ml-auto">
+        <li><a class="nav-item nav-link" href="{% url 'home' %}">Home</a></li>
+        <li><a class="nav-item nav-link" href='{% url 'about' %}'>About</a></li>
+        <li><a class="nav-item nav-link" href="#">Profile</a></li>          
+        <li><a class="nav-item nav-link" href="#">Sign Up</a></li>
+        <li><a class="nav-item nav-link" href="#">Log In</a></li>
+        <li><a class="nav-item nav-link" href="#">Log Out</a></li>
+    </ul>
     </div>
     </div>
 </nav> 
