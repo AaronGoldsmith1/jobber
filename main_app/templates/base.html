@@ -20,7 +20,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav justify-content-right">
-  
         <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
         <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
         {% if user.is_authenticated %}
@@ -30,7 +29,6 @@
             <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
             <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
         {% endif %}
-   
     </div>
     </div>
 </nav> 
