@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from datetime import datetime
 
 from .models import Event
 
@@ -10,8 +11,13 @@ from .models import Event
 
 
 def home(request):
-    events = Event.objects.all()
-    return render(request, 'home.html', {'events': events})
+    # events = Event.objects.filter('dateTime'> 'dateTime.datetime.now()')
+    events = Event.objects.order_by('dateTime')
+    # future_events = [event for event in events if datetime(event.dateTime) > datetime.now()]
+    # future_events = sorted(events, key=lambda x: x.dateTime, reverse=True)
+    upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
+    passed = Event.objects.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
+    return render(request, 'home.html', {'upcoming': upcoming})
 
 
 def about(request):
@@ -50,4 +56,16 @@ def signup(request):
 
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
-    return render(request, 'event/detail.html', {'event': event})
+    # context = {'event': event }
+    # if request.user:
+    #     user = request.user
+    #     context["user"] = user
+    return render(request, 'event/detail.html', {'event':event})
+
+def assoc_event(request, user_id, event_id):
+    User.objects.get(id=user_id).events.add(event_id)
+    return redirect('event/detail.html', event_id=event_id)
+
+def unassoc_event(request, user_id, event_id):
+    User.objects.get(id=user_id).events.remove(event_id)
+    return redirect('event/detail.html', event_id=event_id)
