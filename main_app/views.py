@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.views.decorators.csrf import csrf_protect
 
@@ -14,7 +15,6 @@ from .models import Event
 
 
 def home(request):
-    # events = Event.objects.order_by('dateTime')
     upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = Event.objects.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     if (request.POST):
@@ -58,8 +58,15 @@ def signup(request):
 
 
 def event_detail(request, event_id):
+
     event = Event.objects.get(id=event_id)
-    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id})
+    try:
+        is_registered = event.users.get(id=request.user.id)
+
+    except ObjectDoesNotExist:
+        is_registered = False
+
+    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered})
 
 
 def events_by_category(request, category):
