@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -68,8 +69,8 @@ def events_by_category(request, category):
 
 
 def assoc_event(request, user_id, event_id):
-    User.objects.get(id=user_id).events.add(event_id)
-    return redirect('event/detail.html', event_id=event_id)
+    Event.objects.get(id=event_id).users.add(user_id)
+    return HttpResponseRedirect("")
 
 
 def unassoc_event(request, user_id, event_id):
