@@ -5,16 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import datetime
 
+from django.views.decorators.csrf import csrf_protect
+
 from .models import Event
 
 # Create your views here.
 
 
 def home(request):
-    # events = Event.objects.filter('dateTime'> 'dateTime.datetime.now()')
     events = Event.objects.order_by('dateTime')
-    # future_events = [event for event in events if datetime(event.dateTime) > datetime.now()]
-    # future_events = sorted(events, key=lambda x: x.dateTime, reverse=True)
     upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = Event.objects.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     return render(request, 'home.html', {'upcoming': upcoming})
@@ -56,15 +55,13 @@ def signup(request):
 
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
-    # context = {'event': event }
-    # if request.user:
-    #     user = request.user
-    #     context["user"] = user
-    return render(request, 'event/detail.html', {'event':event})
+    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id})
+
 
 def assoc_event(request, user_id, event_id):
     User.objects.get(id=user_id).events.add(event_id)
     return redirect('event/detail.html', event_id=event_id)
+
 
 def unassoc_event(request, user_id, event_id):
     User.objects.get(id=user_id).events.remove(event_id)
