@@ -74,5 +74,5 @@ def assoc_event(request, user_id, event_id):
 
 
 def unassoc_event(request, user_id, event_id):
-    User.objects.get(id=user_id).events.remove(event_id)
-    return redirect('event/detail.html', event_id=event_id)
+    Event.objects.get(id=event_id).users.remove(user_id)
+    return HttpResponseRedirect("")
