@@ -11,12 +11,13 @@ from .models import Event
 
 
 def home(request):
-    # events = Event.objects.filter('dateTime'> 'dateTime.datetime.now()')
     events = Event.objects.order_by('dateTime')
-    # future_events = [event for event in events if datetime(event.dateTime) > datetime.now()]
-    # future_events = sorted(events, key=lambda x: x.dateTime, reverse=True)
     upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = Event.objects.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
+    if (request.POST):
+        search_term = request.POST.get("search_term")
+        search_results = list(filter(lambda event: search_term in event.title, upcoming))
+        return render (request, 'home.html', {'upcoming':search_results})
     return render(request, 'home.html', {'upcoming': upcoming})
 
 
@@ -31,7 +32,6 @@ def user_profile(request):
     if (request.POST):
         user_id = request.user.id
         user = User.objects.get(id=user_id)
-
         updated_username = request.POST.get('username')
         user.username = updated_username
         user.save()
