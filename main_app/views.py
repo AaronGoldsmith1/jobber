@@ -19,8 +19,8 @@ def home(request):
     if (request.POST):
         search_term = request.POST.get("search_term")
         search_results = list(filter(lambda event: search_term in event.title, upcoming))
-        return render (request, 'home.html', {'upcoming':search_results, 'visibility': "visible", "placeholder":search_term})
-    return render(request, 'home.html', {'upcoming': upcoming, "visibility":"hidden", "placeholder": "Search"})
+        return render(request, 'home.html', {'upcoming': search_results, 'visibility': "visible", "placeholder": search_term})
+    return render(request, 'home.html', {'upcoming': upcoming, "visibility": "hidden", "placeholder": "Search"})
 
 
 def about(request):
@@ -59,6 +59,10 @@ def signup(request):
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
     return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id})
+
+
+def events_by_category(request, category):
+    return render(request, 'event/category-search-results.html', {'category': category})
 
 
 def assoc_event(request, user_id, event_id):

@@ -3,12 +3,47 @@
 
 <h1>Welcome to Jobber</h1>
   <form action="" method="POST" class="form-inline my-2 my-lg-0">
-  {% csrf_token %}
+    {% csrf_token %}
       <input name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
       <input value="Submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">
       <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
-      
   </form>
+
+  <div class="dropdown show">
+
+    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Event Category
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li>
+        <form action={% url 'events_by_category' 'technology' %} name="categoryForm">
+            {% csrf_token %}
+          <input type="submit" value="Technology" class="dropdown-item"></input>
+        </form>
+      </li>
+      <li>
+        <form action={% url 'events_by_category' 'marketing' %} name="categoryForm">
+            {% csrf_token %}
+          <input type="submit" value="Marketing" class="dropdown-item"></input>
+        </form>
+      </li>
+      <li>
+        <form action={% url 'events_by_category' 'networking' %} name="categoryForm">
+            {% csrf_token %}
+          <input type="submit" value="Networking" class="dropdown-item"></input>
+        </form>
+      </li>
+      <li>
+        <form action={% url 'events_by_category' 'career' %} name="categoryForm">
+            {% csrf_token %}
+          <input type="submit" value="Career" class="dropdown-item"></input>
+        </form>
+      </li>
+    </div>
+  </div>
+
+
 <div class="row">
   {% for event in upcoming %}
     <div class="col-sm-3">
@@ -21,7 +56,6 @@
         </div>
       </div>
     </div>
-
   {% endfor %}
 </div>
 
