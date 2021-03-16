@@ -17,8 +17,8 @@ def home(request):
     if (request.POST):
         search_term = request.POST.get("search_term")
         search_results = list(filter(lambda event: search_term in event.title, upcoming))
-        return render (request, 'home.html', {'upcoming':search_results})
-    return render(request, 'home.html', {'upcoming': upcoming})
+        return render (request, 'home.html', {'upcoming':search_results, 'visibility': "visible", "placeholder":search_term})
+    return render(request, 'home.html', {'upcoming': upcoming, "visibility":"hidden", "placeholder": "Search"})
 
 
 def about(request):
