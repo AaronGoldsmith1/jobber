@@ -8,8 +8,16 @@
   <p>Category: {{event.get_type_display}}</p>
   <p>Speaker: {{event.speaker}}</p>
   <p>Date: {{event.dateTime}}</p>
-  <hr class="my-4">
-  <button id="register-button" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+  
+  <button 
+  data-eventId={{event.id}}
+  data-userId={{user_id}}
+  id="register-button" 
+  type="button" 
+  class="btn btn-primary" 
+  data-toggle="button" 
+  aria-pressed="false" 
+  autocomplete="off">
   Register
 </button>
 </div>
