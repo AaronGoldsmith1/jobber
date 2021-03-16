@@ -16,7 +16,6 @@ def about(request):
 
 @login_required
 def user_profile(request):
-    print(request)
     username = request.user.username
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
 
