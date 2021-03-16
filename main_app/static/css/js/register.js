@@ -1,14 +1,17 @@
 $(document).ready(function(){
     $("#register-button").on("click", function(){
+        let userId = $(this).data('userid')
+        let eventId = $(this).data('eventid')
+        let csrfToken = $(this).data('token')
+        
         if (!$(this).hasClass('active')) {
-            $(this).text("Unregister")
-            $(this).removeClass('btn-primary').addClass("btn-danger")
-            let userId = $(this).data('userid')
-            let eventId = $(this).data('eventid')
+            $(this).hide()
+            $('#unregister-trigger').show()
 
             $.ajax({
                 type: "POST",
                 url: `${eventId}/assoc_event/${userId}/`,
+                headers: {'X-CSRFToken': csrfToken},
                 success: function(response) {
                     console.log(response)
                 },
@@ -18,9 +21,27 @@ $(document).ready(function(){
             });
 
 
-        } else {
-            $(this).text("Register")
-            $(this).removeClass('btn-danger').addClass("btn-primary")
-        }
+        } 
+    })
+
+    $('#unregister-button').on('click', function(){
+        let userId = $(this).data('userid')
+        let eventId = $(this).data('eventid')
+        let csrfToken = $(this).data('token')
+        $("#register-button").show()
+        $('#unregister-trigger').hide()
+
+        $.ajax({
+            type: "POST",
+            url: `${eventId}/unassoc_event/${userId}/`,
+            headers: {'X-CSRFToken': csrfToken},
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(e){
+                console.log(e)
+            }
+         });
     })
 })
+
