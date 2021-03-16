@@ -10,6 +10,7 @@
   <p>Date: {{event.dateTime}}</p>
   
   <button 
+  data-token={{ csrf_token }}
   data-eventId={{event.id}}
   data-userId={{user_id}}
   id="register-button" 

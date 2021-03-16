@@ -5,10 +5,12 @@ $(document).ready(function(){
             $(this).removeClass('btn-primary').addClass("btn-danger")
             let userId = $(this).data('userid')
             let eventId = $(this).data('eventid')
+            let csrfToken = $(this).data('token')
 
             $.ajax({
                 type: "POST",
                 url: `${eventId}/assoc_event/${userId}/`,
+                headers: {'X-CSRFToken': csrfToken},
                 success: function(response) {
                     console.log(response)
                 },
