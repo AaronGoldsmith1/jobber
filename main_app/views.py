@@ -13,7 +13,7 @@ from .models import Event
 
 
 def home(request):
-    events = Event.objects.order_by('dateTime')
+    # events = Event.objects.order_by('dateTime')
     upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = Event.objects.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     if (request.POST):
@@ -62,7 +62,9 @@ def event_detail(request, event_id):
 
 
 def events_by_category(request, category):
-    return render(request, 'event/category-search-results.html', {'category': category})
+    upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
+    search_results = list(filter(lambda event: category == event.get_type_display(), upcoming))
+    return render(request, 'event/category-search-results.html', {'category': category, 'search_results': search_results})
 
 
 def assoc_event(request, user_id, event_id):
