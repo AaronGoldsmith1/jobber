@@ -25,19 +25,22 @@ $(document).ready(function(){
     })
 
     $('#unregister-button').on('click', function(){
-            $("#register-button").show()
-            $('#unregister-trigger').hide()
+        let userId = $(this).data('userid')
+        let eventId = $(this).data('eventid')
+        let csrfToken = $(this).data('token')
+        $("#register-button").show()
+        $('#unregister-trigger').hide()
 
-            $.ajax({
-                type: "POST",
-                url: `${eventId}/unassoc_event/${userId}/`,
-                headers: {'X-CSRFToken': csrfToken},
-                success: function(response) {
-                    console.log(response)
-                },
-                error: function(e){
-                    console.log(e)
-                }
+        $.ajax({
+            type: "POST",
+            url: `${eventId}/unassoc_event/${userId}/`,
+            headers: {'X-CSRFToken': csrfToken},
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(e){
+                console.log(e)
+            }
          });
     })
 })
