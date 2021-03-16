@@ -20,4 +20,3 @@ class Event(models.Model):
         choices=EVENT_TYPES,
         default=EVENT_TYPES[0][0]
     )
-    users = models.ManyToManyField(User, blank=True)
