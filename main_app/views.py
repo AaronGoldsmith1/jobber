@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.validators import UnicodeUsernameValidator
-
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
@@ -92,10 +91,6 @@ def signup(request):
 
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
-<<<<<<< HEAD
-=======
-
->>>>>>> submain
     if (request.user.id == None):
         is_logged_in = False
     else:
