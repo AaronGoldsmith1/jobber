@@ -19,8 +19,6 @@ $(document).ready(function(){
                     console.log(e)
                 }
             });
-
-
         } 
     })
 
@@ -30,7 +28,6 @@ $(document).ready(function(){
         let csrfToken = $(this).data('token')
         $("#register-button").show()
         $('#unregister-trigger').hide()
-
         $.ajax({
             type: "POST",
             url: `${eventId}/unassoc_event/${userId}/`,
@@ -41,7 +38,6 @@ $(document).ready(function(){
             error: function(e){
                 console.log(e)
             }
-         });
+        });
     })
 })
-

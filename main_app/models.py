@@ -11,11 +11,11 @@ EVENT_TYPES = (
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=250)
-    dateTime = models.DateTimeField()
-    speaker = models.CharField(max_length=250)
-    description = models.CharField(max_length=350)
-    type = models.CharField(
+    title = models.CharField(max_length=250, null=False)
+    dateTime = models.DateTimeField(null=False)
+    speaker = models.CharField(max_length=250, null=False)
+    description = models.CharField(max_length=350, null=False)
+    category = models.CharField(
         max_length=1,
         choices=EVENT_TYPES,
         default=EVENT_TYPES[0][0]
