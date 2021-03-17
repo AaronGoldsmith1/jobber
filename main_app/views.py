@@ -62,6 +62,7 @@ def signup(request):
 
 
 def event_detail(request, event_id):
+    event = Event.objects.get(id=event_id)
     if (request.user.id == None):
         is_logged_in = False
     else:
