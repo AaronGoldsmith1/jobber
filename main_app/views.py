@@ -71,7 +71,7 @@ def event_detail(request, event_id):
 
 def events_by_category(request, category):
     upcoming = Event.objects.filter(dateTime__gte=datetime.now()).order_by('dateTime')
-    search_results = list(filter(lambda event: category == event.get_type_display(), upcoming))
+    search_results = list(filter(lambda event: category == event.get_category_display().lower(), upcoming))
     return render(request, 'event/category-search-results.html', {'category': category, 'search_results': search_results})
 
 
