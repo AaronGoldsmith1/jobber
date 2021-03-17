@@ -13,7 +13,18 @@ from django.views.decorators.csrf import csrf_protect
 
 from .models import Event
 
-# Create your views here.
+
+def customPasswordValidator(password):
+    special_characters = "[~\!@#\$%\^&\*\(\)_\+{}\":;'\[\]]"
+    if not any(char.isdigit() for char in password):
+        return 'Password must contain at least 1 digit.'
+    if not any(char in special_characters for char in password):
+        return 'Password must contain at least 1 special character.'
+    if not any(char.isupper() for char in password):
+        return 'Password must contain at lest 1 uppercase letter'
+    if len(password) < 8:
+        return 'Password must be at least 8 characters long'
+    return 'Invalid Password, Please Try Again.'
 
 
 def home(request):
@@ -54,19 +65,21 @@ def user_profile(request):
                 user.username = updated_username
 
         # username stays the same
-        elif request.user.username == request.POST.get('username') and len(list(User.objects.filter(username=request.user.username))):
+        elif request.user.username == request.POST.get('username') and len(list(User.objects.filter(username=request.user.username))) == 1:
             updated_username = request.user.username
 
         if request.POST.get('password') != '':
+            validation_message = customPasswordValidator(request.POST.get('password'))
             try:
                 # validate the password and catch the exception
                 password_validation.validate_password(request.POST.get('password'))
+                customPasswordValidator(request.POST.get('password'))
                 updated_password = request.POST.get('password')
                 user.set_password(updated_password)
 
             # the exception raised here is different than serializers.ValidationError
             except ValidationError:
-                messages.error(request, "Invalid Password, Please Try Again.")
+                messages.error(request, validation_message)
 
         user.save()
         return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date})
