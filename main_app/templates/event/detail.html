@@ -3,16 +3,20 @@
 {% load humanize %}
 
 <div class="jumbotron">
+  <div class = "container text-center">
   <h1 class="display-4">{{event.title}}</h1>
-  <p class="lead">{{event.description}}</p>
+  </div>
+</div>
+  <p>Speaker: {{event.speaker}}</p>
+  <p>Date: {{event.dateTime}}</p>  
+  <p>Desciprtion: <br>{{event.description}}</p>
   <hr class="my-4">
   <p>Category: {{event.get_category_display}}</p>
-  <p>Speaker: {{event.speaker}}</p>
-  <p>Date: {{event.dateTime}}</p>
   <p>{{event.dateTime|naturaltime}}</p>
   <hr class="my-4">
-  {% if is_logged_in %}
-  <button 
+  <div class = "container text-center">
+    {% if is_logged_in %}
+  <button
   {% if is_registered %}
     style="display:none"
   {% endif %} 
@@ -31,9 +35,7 @@
 {% else %}
 <p>Sign up or Log in to register for event!</p>
 {% endif %}
-
-
-  <button
+<button
   {% if is_registered %}
     style="display:initial"
   {% endif %} 
@@ -44,7 +46,7 @@
   data-target="#unregister-modal">
     Unregister
   </button>
-</div>
+  </div>
 
 
 
