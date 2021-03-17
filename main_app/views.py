@@ -39,10 +39,24 @@ def user_profile(request):
     username = request.user.username
 
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
+
     if (request.POST):
         user_id = request.user.id
         user = User.objects.get(id=user_id)
-        updated_username = request.POST.get('username')
+
+        # user enters a new user name
+        if request.user.username != request.POST.get('username'):
+
+            # username already in use, show error
+            if User.objects.filter(username=request.POST.get('username')).exists() == True:
+                messages.error(request, "Invalid User Name, Please Try Again.")
+            else:
+                updated_username = request.POST.get('username')
+                user.username = updated_username
+
+        # username stays the same
+        elif request.user.username == request.POST.get('username') and len(list(User.objects.filter(username=request.user.username))):
+            updated_username = request.user.username
 
         if request.POST.get('password') != '':
             try:
@@ -55,9 +69,8 @@ def user_profile(request):
             except ValidationError:
                 messages.error(request, "Invalid Password, Please Try Again.")
 
-        user.username = updated_username
         user.save()
-        return render(request, 'user/profile.html', {'username': updated_username, 'join_date': join_date})
+        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date})
     return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed})
 
 
