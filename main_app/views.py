@@ -1,11 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, password_validation
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.validators import UnicodeUsernameValidator
+
 from django.contrib.auth.models import User
 from datetime import datetime
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 from django.views.decorators.csrf import csrf_protect
 
@@ -34,15 +37,41 @@ def user_profile(request):
     upcoming = user_events.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = user_events.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     username = request.user.username
+
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
+
     if (request.POST):
         user_id = request.user.id
         user = User.objects.get(id=user_id)
-        updated_username = request.POST.get('username')
-        user.username = updated_username
+
+        # user enters a new user name
+        if request.user.username != request.POST.get('username'):
+
+            # username already in use, show error
+            if User.objects.filter(username=request.POST.get('username')).exists() == True:
+                messages.error(request, "Invalid User Name, Please Try Again.")
+            else:
+                updated_username = request.POST.get('username')
+                user.username = updated_username
+
+        # username stays the same
+        elif request.user.username == request.POST.get('username') and len(list(User.objects.filter(username=request.user.username))):
+            updated_username = request.user.username
+
+        if request.POST.get('password') != '':
+            try:
+                # validate the password and catch the exception
+                password_validation.validate_password(request.POST.get('password'))
+                updated_password = request.POST.get('password')
+                user.set_password(updated_password)
+
+            # the exception raised here is different than serializers.ValidationError
+            except ValidationError:
+                messages.error(request, "Invalid Password, Please Try Again.")
+
         user.save()
-        return render(request, 'user/profile.html', {'username': updated_username, 'join_date': join_date})
-    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming':upcoming, 'passed':passed})
+        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date})
+    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed})
 
 
 def signup(request):
@@ -63,17 +92,22 @@ def signup(request):
 
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
+<<<<<<< HEAD
+=======
+
+>>>>>>> submain
     if (request.user.id == None):
         is_logged_in = False
     else:
         is_logged_in = True
+
     try:
         is_registered = event.users.get(id=request.user.id)
 
     except ObjectDoesNotExist:
         is_registered = False
 
-    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered, "is_logged_in":is_logged_in})
+    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered, "is_logged_in": is_logged_in})
 
 
 def events_by_category(request, category):
@@ -81,10 +115,12 @@ def events_by_category(request, category):
     search_results = list(filter(lambda event: category == event.get_category_display().lower(), upcoming))
     return render(request, 'event/category-search-results.html', {'category': category, 'search_results': search_results})
 
+
 @login_required
 def assoc_event(request, user_id, event_id):
     Event.objects.get(id=event_id).users.add(user_id)
     return HttpResponseRedirect("")
+
 
 @login_required
 def unassoc_event(request, user_id, event_id):
