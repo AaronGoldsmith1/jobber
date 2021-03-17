@@ -30,6 +30,9 @@ def about(request):
 
 @login_required
 def user_profile(request):
+    user_events = Event.objects.filter(users__id=request.user.id)
+    upcoming = user_events.filter(dateTime__gte=datetime.now()).order_by('dateTime')
+    passed = user_events.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     username = request.user.username
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
     if (request.POST):
@@ -39,7 +42,7 @@ def user_profile(request):
         user.username = updated_username
         user.save()
         return render(request, 'user/profile.html', {'username': updated_username, 'join_date': join_date})
-    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date})
+    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming':upcoming, 'passed':passed})
 
 
 def signup(request):
@@ -51,6 +54,7 @@ def signup(request):
             login(request, user)
             return redirect('user_profile')
         else:
+            print(form.errors.as_json())
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
@@ -58,15 +62,17 @@ def signup(request):
 
 
 def event_detail(request, event_id):
-
-    event = Event.objects.get(id=event_id)
+    if (request.user.id == None):
+        is_logged_in = False
+    else:
+        is_logged_in = True
     try:
         is_registered = event.users.get(id=request.user.id)
 
     except ObjectDoesNotExist:
         is_registered = False
 
-    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered})
+    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered, "is_logged_in":is_logged_in})
 
 
 def events_by_category(request, category):
@@ -74,12 +80,12 @@ def events_by_category(request, category):
     search_results = list(filter(lambda event: category == event.get_category_display().lower(), upcoming))
     return render(request, 'event/category-search-results.html', {'category': category, 'search_results': search_results})
 
-
+@login_required
 def assoc_event(request, user_id, event_id):
     Event.objects.get(id=event_id).users.add(user_id)
     return HttpResponseRedirect("")
 
-
+@login_required
 def unassoc_event(request, user_id, event_id):
     Event.objects.get(id=event_id).users.remove(user_id)
     return HttpResponseRedirect("")
