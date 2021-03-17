@@ -12,6 +12,9 @@
   <p>{{event.dateTime|naturaltime}}</p>
   <hr class="my-4">
   <button 
+   {% if is_registered %}
+    style="display:none"
+  {% endif %} 
   data-token={{ csrf_token }}
   data-eventId={{event.id}}
   data-userId={{user_id}}
@@ -24,7 +27,10 @@
   Register
 </button>
 
-  <button 
+  <button
+  {% if is_registered %}
+    style="display:initial"
+  {% endif %} 
   id="unregister-trigger"
   type="button" 
   class="btn btn-danger" 
