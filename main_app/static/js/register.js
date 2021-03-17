@@ -3,9 +3,11 @@ $(document).ready(function(){
         let userId = $(this).data('userid')
         let eventId = $(this).data('eventid')
         let csrfToken = $(this).data('token')
+        
         if (!$(this).hasClass('active')) {
             $(this).hide()
             $('#unregister-trigger').show()
+
             $.ajax({
                 type: "POST",
                 url: `${eventId}/assoc_event/${userId}/`,
@@ -19,6 +21,7 @@ $(document).ready(function(){
             });
         } 
     })
+
     $('#unregister-button').on('click', function(){
         let userId = $(this).data('userid')
         let eventId = $(this).data('eventid')
