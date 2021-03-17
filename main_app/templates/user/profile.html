@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% for message in messages %}
+  <div class="alert alert-success">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+{% endfor %}
+
 <h1>User Profile</h1>
 <h2>{{username}} joined {{join_date}}</h2>
 
@@ -20,7 +27,11 @@
           </div>
           <form action="" method="POST"> 
             {% csrf_token %}
-            <div class="modal-body">User Name: <input type="text" id="username" name="username" value="{{username}}"></div>
+            <div class="modal-body">
+              User Name: <input type="text" id="username" name="username" value="{{username}}">
+              <br>
+              Update Password?: <input type="password" id="password" name="password" value="">
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <input name="submit" type="submit" class="btn btn-primary">

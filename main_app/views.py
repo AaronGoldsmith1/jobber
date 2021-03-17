@@ -1,11 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, password_validation
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.validators import UnicodeUsernameValidator
+
 from django.contrib.auth.models import User
 from datetime import datetime
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 from django.views.decorators.csrf import csrf_protect
 
@@ -34,11 +37,24 @@ def user_profile(request):
     upcoming = user_events.filter(dateTime__gte=datetime.now()).order_by('dateTime')
     passed = user_events.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     username = request.user.username
+
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
     if (request.POST):
         user_id = request.user.id
         user = User.objects.get(id=user_id)
         updated_username = request.POST.get('username')
+
+        if request.POST.get('password') != '':
+            try:
+                # validate the password and catch the exception
+                password_validation.validate_password(request.POST.get('password'))
+                updated_password = request.POST.get('password')
+                user.set_password(updated_password)
+
+            # the exception raised here is different than serializers.ValidationError
+            except ValidationError:
+                messages.error(request, "Invalid Password, Please Try Again.")
+
         user.username = updated_username
         user.save()
         return render(request, 'user/profile.html', {'username': updated_username, 'join_date': join_date})
