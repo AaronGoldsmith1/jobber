@@ -84,6 +84,30 @@ ul {
   bottom: 3.95em;
 }
 
+.past-events .slick-prev {
+  position: relative;
+  top: 3.5em;
+  left: 2px;
+}
+
+.past-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.1em;
+}
+
+.upcoming-events .slick-prev {
+  position: relative;
+  top: 2.6em;
+  left: 2px;
+}
+
+.upcoming-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.15em;
+}
+
 .dropdown-toggle {
   position: absolute;
   top: 10px;
