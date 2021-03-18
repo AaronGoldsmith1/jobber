@@ -2,18 +2,33 @@
 {% block content %}
 {% load humanize %}
 
-<div class="jumbotron">
+
+
+{% if event.category == 'T' %}
+<div class="jumbotron technology">
+{% endif %}
+{% if event.category == 'M' %}
+<div class="jumbotron marketing">
+{% endif %}
+{% if event.category == 'N' %}
+<div class="jumbotron networking">
+{% endif %}
+{% if event.category == 'C' %}
+<div class="jumbotron career">
+{% endif %}
   <div class = "container text-center">
   <h1 class="display-4">{{event.title}}</h1>
   </div>
 </div>
-  <p>Speaker: {{event.speaker}}</p>
-  <p>Date: {{event.dateTime}}</p>  
-  <p>Desciprtion: <br>{{event.description}}</p>
+<div class="event-details">
+  <p><span class="detail-info">Speaker:</span> {{event.speaker}}</p>
+  <p><span class="detail-info">Date:</span> {{event.dateTime}}</p>  
+  <p><span class="detail-info">Desciprtion:</span> <br>{{event.description}}</p>
   <hr class="my-4">
-  <p>Category: {{event.get_category_display}}</p>
-  <p>{{event.dateTime|naturaltime}}</p>
+  <p><span class="detail-info">Desciprtion:</span> {{event.get_category_display}}</p>
+  <p class="detail-info">{{event.dateTime|naturaltime}}</p>
   <hr class="my-4">
+</div>
   <div class = "container text-center">
     {% if is_logged_in %}
   <button

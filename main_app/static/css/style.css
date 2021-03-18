@@ -96,3 +96,35 @@
 ul {
   list-style-type: none;
 }
+
+.technology{
+  background-image: url("./images/details.jpeg");
+  background-size: cover;
+}
+
+.marketing {
+  background-image: url("./images/marketing.png");
+  background-size: cover;
+}
+.networking {
+  background-image: url("./images/networking.jpeg");
+  background-size: cover;
+}
+
+
+.display-4 {
+  font-weight:700;
+  font-style: italic;
+  color: #175594;
+}
+
+.event-details {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.detail-info {
+  font-weight: bolder;
+  font-style: italic;
+  color: rgb(53, 49, 48)
+}
