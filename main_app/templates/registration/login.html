@@ -5,7 +5,7 @@
 	<div class="card-body">
 		<h3 class="card-title text-center">Log in to Jobber</h3>
 		<div class="card-text">
-			<form method="post" action="/accounts/login/">
+			<form method="post" action="{% url 'login' %}">
       {% csrf_token %}
 				<div class="form-group">
 					<label for="id_username">User Name</label>

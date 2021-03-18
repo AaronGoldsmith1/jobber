@@ -92,3 +92,7 @@
   margin-bottom: 20px;
   margin-left: 10px;
 }
+
+ul {
+  list-style-type: none;
+}
