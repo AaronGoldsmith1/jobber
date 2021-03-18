@@ -4,15 +4,15 @@
 {% comment %} {% load static %} {% endcomment %}
 
 <div class="home-panels flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-          <h2 class="display-5">Find and Register for Events happening soon!</h2>
-          <p class="lead">Search for events below, or select a category from the dropdown.</p>
-        </div>
-      </div>
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Find and Register for Events happening soon!</h2>
+      <p class="lead">Search for events below, or select a category from the dropdown.</p>
     </div>
+  </div>
+</div>
   
-  <div class="input-group home-input">
+<div class="input-group home-input">
   <form action="" method="POST" class="form-inline my-2 my-lg-0">
     {% csrf_token %}
       <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
@@ -52,7 +52,7 @@
       </li>
     </div>
   </div>
-  </div>
+</div>
 
 <div class="container-fluid content-row event-container">
   <div class="row card-group event-cards">
