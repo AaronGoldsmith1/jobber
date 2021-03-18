@@ -72,7 +72,11 @@ ul {
   background-size: cover;
 }
 .networking {
-  background-image: url("./images/networking.jpeg");
+  background-image: url("./images/networking.png");
+  background-size: cover;
+}
+.career {
+  background-image: url("./images/career.jpeg");
   background-size: cover;
 }
 
@@ -80,7 +84,7 @@ ul {
 .display-4 {
   font-weight:700;
   font-style: italic;
-  color: #175594;
+  color: #0f1b27;
 }
 
 .event-details {
@@ -92,6 +96,8 @@ ul {
   font-weight: bolder;
   font-style: italic;
   color: rgb(53, 49, 48)
+}
+
 .slick-arrow:focus {
   outline: none;
 }
