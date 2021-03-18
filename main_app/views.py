@@ -82,7 +82,7 @@ def user_profile(request):
 
             update_session_auth_hash(request, request.user)
         user.save()
-        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date, 'events_attended': events_attended})
+        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed, 'events_attended': events_attended})
     return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed, 'events_attended': events_attended})
 
 
