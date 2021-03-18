@@ -19,7 +19,6 @@
 .home-input {
   position: relative;
   top: 250px;
-  left: 30px;
 }
 
 .home-panels {
@@ -44,47 +43,7 @@
 
 .home-footer {
   bottom: -150px;
-}
-
-
-.slick-arrow:focus {
-  outline: none;
-}
-
-.slick-arrow {
-  position: absolute;
-  outline: none;
-  top: 50%;
-  margin-top: -108px;
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.slick-prev {
-  /* left: -40px; */
-  z-index: 1;
-  background-color: transparent;
-  border-left: 0 solid transparent;
-  border-right: 15px solid black;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.slick-next {
-  right: 0px;
-  z-index: 1;
-  background-color: transparent;
-  border-right: 0 solid transparent;
-  border-left: 15px solid black;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
+  z-index: 2;
 }
 
 .user-detail {
@@ -102,4 +61,26 @@
 
 ul {
   list-style-type: none;
+}
+
+.slick-arrow:focus {
+  outline: none;
+}
+
+.slick-arrow {
+  background: transparent;
+  color: gray;
+  z-index: 1;
+}
+
+.slick-prev {
+  position: relative;
+  top: 3.5em;
+  left: 2px;
+}
+
+.slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.95em;
 }
