@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if category == 'technology' %}
+<div class="jumbotron technology">
+{% endif %}
+{% if category == 'marketing' %}
+<div class="jumbotron marketing">
+{% endif %}
+{% if category == 'networking' %}
+<div class="jumbotron networking">
+{% endif %}
+{% if category == 'career' %}
+<div class="jumbotron career">
+{% endif %}
+  <div class = "container text-center">
+  <h1 class="display-4 category">{{category | title}}</h1>
+  </div>
+</div>
+
 <div class="card">
   <h5 class="card-header text-center">Results for {{category | title}} events</h5>
   <div class="card-body">
@@ -11,7 +28,6 @@
     </ul>
   </div>
 </div>
-
 <br>
 
 &nbsp&nbsp
