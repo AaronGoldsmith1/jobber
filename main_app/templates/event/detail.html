@@ -27,6 +27,11 @@
   <hr class="my-4">
   <p><span class="detail-info">Category:</span> {{event.get_category_display}}</p>
   <p class="detail-info">{{event.dateTime|naturaltime}}</p>
+<hr>
+  {% if is_admin %}
+    <p><span class="detail-info">Total Attendees:</span> {{total_attendees}}</p>
+  {% endif %}
+
   <hr class="my-4">
 </div>
   <div class = "container text-center">

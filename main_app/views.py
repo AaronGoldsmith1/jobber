@@ -104,10 +104,17 @@ def signup(request):
 
 def event_detail(request, event_id):
     event = Event.objects.get(id=event_id)
+    total_attendees = len(event.users.all())
+
     if (request.user.id == None):
         is_logged_in = False
     else:
         is_logged_in = True
+
+    if (request.user.is_superuser):
+        is_admin = True
+    else:
+        is_admin = False
 
     try:
         is_registered = event.users.get(id=request.user.id)
@@ -115,7 +122,14 @@ def event_detail(request, event_id):
     except ObjectDoesNotExist:
         is_registered = False
 
-    return render(request, 'event/detail.html', {'event': event, 'user_id': request.user.id, 'is_registered': is_registered, "is_logged_in": is_logged_in})
+    return render(request, 'event/detail.html', {
+        'event': event,
+        'user_id': request.user.id,
+        'is_admin': is_admin,
+        'is_registered': is_registered,
+        'is_logged_in': is_logged_in,
+        'total_attendees': total_attendees
+    })
 
 
 def events_by_category(request, category):
