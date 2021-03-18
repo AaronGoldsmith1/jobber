@@ -13,12 +13,13 @@
 </div>
   
 <div class="input-group home-input">
-  <form action="" method="POST" class="form-inline my-2 my-lg-0">
+  <ul>
+  <li><form action="" method="POST" class="form-inline my-2 my-lg-0">
     {% csrf_token %}
       <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
       <input value="Submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">
       <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
-  </form>
+  </form></li>
 
   <div class="dropdown show dropright">
     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,6 +53,7 @@
       </li>
     </div>
   </div>
+  </ul>
 </div>
 
 <div class="container-fluid content-row event-container home-events">
