@@ -18,12 +18,16 @@
   </div>
 </div>
 
-<ul class="list-group">
-  {% for event in search_results %}
-    <li class="list-group-item">{{event.title}} - {{event.dateTime}} - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
-  {% endfor %}
-</ul>
-
+<div class="card">
+  <h5 class="card-header text-center">Results for {{category | title}} events</h5>
+  <div class="card-body">
+    <ul class="list-group">
+    {% for event in search_results %}
+      <li class="list-group-item">{{event.title}} - {{event.dateTime}} - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
 <br>
 
 &nbsp&nbsp
