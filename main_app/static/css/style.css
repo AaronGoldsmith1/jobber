@@ -26,6 +26,10 @@
   margin-bottom: -175px !important
 }
 
+.jobber-img {
+  width: 40%;
+}
+
 .footer {
   position: absolute;
   bottom: -150px;
@@ -74,4 +78,21 @@
   border-left: 15px solid black;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
+}
+
+.user-detail {
+  font-weight: bold;
+}
+
+.user-detail--card {
+  margin-bottom: 20px
+}
+
+.user-detail--edit-button {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
 }
