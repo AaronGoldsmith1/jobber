@@ -45,8 +45,8 @@ def about(request):
 def user_profile(request):
     user_events = Event.objects.filter(users__id=request.user.id)
     upcoming = user_events.filter(dateTime__gte=datetime.now()).order_by('dateTime')
-    events_attended = len(upcoming)
     passed = user_events.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
+    events_attended = len(passed)
     username = request.user.username
 
     join_date = f"{request.user.date_joined.month}/{request.user.date_joined.day}/{request.user.date_joined.year}"
