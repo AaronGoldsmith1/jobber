@@ -45,6 +45,7 @@ def about(request):
 def user_profile(request):
     user_events = Event.objects.filter(users__id=request.user.id)
     upcoming = user_events.filter(dateTime__gte=datetime.now()).order_by('dateTime')
+    events_attended = len(upcoming)
     passed = user_events.filter(dateTime__lt=datetime.now()).order_by('-dateTime')
     username = request.user.username
 
@@ -81,8 +82,8 @@ def user_profile(request):
 
             update_session_auth_hash(request, request.user)
         user.save()
-        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date})
-    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed})
+        return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date, 'events_attended': events_attended})
+    return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed, 'events_attended': events_attended})
 
 
 def signup(request):

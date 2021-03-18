@@ -30,15 +30,22 @@
   width: 40%;
 }
 
+.past-events {
+  margin-bottom: 20px
+}
+
 .footer {
   position: absolute;
-  bottom: -150px;
   width: 100%;
   height: 40px;
   line-height: 40px;
   background-color: #212529;
-  ;
 }
+
+.home-footer {
+  bottom: -150px;
+}
+
 
 .slick-arrow:focus {
   outline: none;
