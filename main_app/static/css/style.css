@@ -80,6 +80,9 @@ ul {
   background-size: cover;
 }
 
+.category {
+  text-transform: uppercase;
+}
 
 .display-4 {
   font-weight:700;
