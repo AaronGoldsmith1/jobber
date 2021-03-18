@@ -21,3 +21,6 @@ class Event(models.Model):
         default=EVENT_TYPES[0][0]
     )
     users = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        return self.title

@@ -4,21 +4,22 @@
 {% comment %} {% load static %} {% endcomment %}
 
 <div class="home-panels flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-          <h2 class="display-5">Find and Register for Events happening soon!</h2>
-          <p class="lead">Search for events below, or select a category from the dropdown.</p>
-        </div>
-      </div>
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Find and Register for Events happening soon!</h2>
+      <p class="lead">Search for events below, or select a category from the dropdown.</p>
     </div>
+  </div>
+</div>
   
-  <div class="input-group home-input">
-  <form action="" method="POST" class="form-inline my-2 my-lg-0">
+<div class="input-group home-input">
+  <ul>
+  <li><form action="" method="POST" class="form-inline my-2 my-lg-0">
     {% csrf_token %}
       <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
       <input value="Submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">
       <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
-  </form>
+  </form></li>
 
   <div class="dropdown show dropright">
     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,9 +53,10 @@
       </li>
     </div>
   </div>
-  </div>
+  </ul>
+</div>
 
-<div class="container-fluid content-row event-container">
+<div class="container-fluid content-row event-container home-events">
   <div class="row card-group event-cards">
     {% for event in upcoming %}
       <div class="col-sm-4">
@@ -73,4 +75,9 @@
   </div>
 </div>
 
+   <footer class="footer home-footer">
+        <div class="container">
+            <span class="text-muted">&copy; Aaron Goldsmith and Ivy Wu - Produced for SEI-0119</span>
+        </div>
+    </footer>   
 {% endblock content %}

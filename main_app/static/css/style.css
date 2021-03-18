@@ -1,6 +1,5 @@
 #search-input {
   width: 400px;
-  margin-left: 120px;
 }
 
 #unregister-trigger {
@@ -19,7 +18,6 @@
 .home-input {
   position: relative;
   top: 250px;
-  left: 30px;
 }
 
 .home-panels {
@@ -30,54 +28,21 @@
   width: 40%;
 }
 
+.past-events {
+  margin-bottom: 20px
+}
+
 .footer {
   position: absolute;
-  bottom: -150px;
   width: 100%;
   height: 40px;
   line-height: 40px;
   background-color: #212529;
-  ;
 }
 
-.slick-arrow:focus {
-  outline: none;
-}
-
-.slick-arrow {
-  position: absolute;
-  outline: none;
-  top: 50%;
-  margin-top: -108px;
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.slick-prev {
-  /* left: -40px; */
-  z-index: 1;
-  background-color: transparent;
-  border-left: 0 solid transparent;
-  border-right: 15px solid black;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.slick-next {
-  right: 0px;
-  z-index: 1;
-  background-color: transparent;
-  border-right: 0 solid transparent;
-  border-left: 15px solid black;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
+.home-footer {
+  bottom: -150px;
+  z-index: 2;
 }
 
 .user-detail {
@@ -127,4 +92,29 @@ ul {
   font-weight: bolder;
   font-style: italic;
   color: rgb(53, 49, 48)
+.slick-arrow:focus {
+  outline: none;
+}
+
+.slick-arrow {
+  background: transparent;
+  color: gray;
+  z-index: 1;
+}
+
+.home-events .slick-prev {
+  position: relative;
+  top: 3.5em;
+  left: 2px;
+}
+
+.home-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.95em;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  top: 10px;
 }
