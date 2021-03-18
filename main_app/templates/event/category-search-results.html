@@ -4,24 +4,18 @@
 
 <h1>Category Search Results for {{category}}</h1>
 
-
-<div class="row">
+<ul class="list-group">
   {% for event in search_results %}
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{event.title}}</h5>
-          <p class="card-text">{{event.description|truncatechars:100}}</p>
-          <p class="card-text">{{event.dateTime}}</p>
-          <a href={% url 'event_detail' event.id %} class="btn btn-primary">Event Details</a>
-        </div>
-      </div>
-    </div>
+    <li class="list-group-item">{{event.title}} - {{event.dateTime}} - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
   {% endfor %}
-</div>
+</ul>
 
-<hr class="my-4">
-<a href="{% url 'home' %}"> << Back To Homepage</a>
+<br>
 
+&nbsp&nbsp
+
+<a type="button" class="btn btn-primary" href="{% url 'home' %}">
+ <i class="far fa-arrow-square-left fa-lg"></i>&nbsp&nbspHome
+</a>
 
 {% endblock content %}
