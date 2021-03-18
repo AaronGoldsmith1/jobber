@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, password_validation
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth import login, password_validation, update_session_auth_hash
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.validators import UnicodeUsernameValidator
@@ -73,14 +73,13 @@ def user_profile(request):
             try:
                 # validate the password and catch the exception
                 password_validation.validate_password(request.POST.get('password'))
-                customPasswordValidator(request.POST.get('password'))
                 updated_password = request.POST.get('password')
                 user.set_password(updated_password)
-
-            # the exception raised here is different than serializers.ValidationError
+                # the exception raised here is different than serializers.ValidationError
             except ValidationError:
                 messages.error(request, validation_message)
 
+            update_session_auth_hash(request, request.user)
         user.save()
         return render(request, 'user/profile.html', {'username': user.username, 'join_date': join_date})
     return render(request, 'user/profile.html', {'username': username, 'join_date': join_date, 'upcoming': upcoming, 'passed': passed})

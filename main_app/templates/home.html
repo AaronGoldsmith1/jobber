@@ -1,19 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load humanize %}
+{% comment %} {% load static %} {% endcomment %}
 
-<h1>Welcome to Jobber</h1>
+<div class="home-panels d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Welcome To Jobber</h2>
+          <p class="lead">We bring a world of events to your fingertips!</p>
+        </div>
+        {% comment %} <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> {% endcomment %}
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Find and Register for Events happening soon!</h2>
+          <p class="lead">Search for events below, or select a category from the dropdown.</p>
+        </div>
+        {% comment %} <img src="{% static 'icons/jobber.png' %}"> {% endcomment %}
+        {% comment %} <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> {% endcomment %}
+      </div>
+    </div>
+  
+  <div class="input-group home-input">
   <form action="" method="POST" class="form-inline my-2 my-lg-0">
     {% csrf_token %}
-      <input name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
+      <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
       <input value="Submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">
       <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
   </form>
 
   <div class="dropdown show">
-
     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Event Category
+      View Events By Category
     </a>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -43,12 +61,13 @@
       </li>
     </div>
   </div>
+  </div>
 
-<div class="container-fluid content-row">
+<div class="container-fluid content-row event-container">
   <div class="row card-group event-cards">
     {% for event in upcoming %}
       <div class="col-sm-4">
-        <div class="card h-100">
+        <div class="card home-card">
           <div class="card-body">
             <h5 class="card-title">{{event.title}}</h5>
             <p class="card-text">
