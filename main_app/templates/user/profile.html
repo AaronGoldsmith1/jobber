@@ -53,11 +53,8 @@
 </div>
 
 <h3 class="text-center">Upcoming Events</h3>
-<<<<<<< HEAD
 <div class="row ">
-=======
-<div class="row event-cards upcoming-events">
->>>>>>> submain
+{% if upcoming.count %}
   {% for event in upcoming %}
     <div class="col-sm-3">
       <div class="card">
@@ -71,10 +68,15 @@
       </div>
     </div>
   {% endfor %}
+  {% else %}
+  <p class="event-details detail-info">No upcoming events</p>
+  {% endif %}
 </div>
+
 
 <h3 class="text-center">Past Events</h3>
 <div class="row past-events">
+{% if passed.count %}
   {% for event in passed %}
     <div class="col-sm-3">
       <div class="card">
@@ -88,6 +90,9 @@
       </div>
     </div>
   {% endfor %}
+  {% else %}
+  <p class="event-details detail-info">No past events</p>
+  {% endif %}
 </div>
 
 {% endblock content %}
