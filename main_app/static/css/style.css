@@ -73,13 +73,13 @@ ul {
   z-index: 1;
 }
 
-.slick-prev {
+.home-events .slick-prev {
   position: relative;
   top: 3.5em;
   left: 2px;
 }
 
-.slick-next {
+.home-events .slick-next {
   float: right;
   position: relative;
   bottom: 3.95em;
