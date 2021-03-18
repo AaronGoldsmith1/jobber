@@ -26,6 +26,10 @@
   margin-bottom: -175px !important
 }
 
+.jobber-img {
+  width: 40%;
+}
+
 .footer {
   position: absolute;
   bottom: -150px;
