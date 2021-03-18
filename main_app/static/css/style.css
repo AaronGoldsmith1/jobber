@@ -79,3 +79,16 @@
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
+
+span {
+  font-weight: bold;
+}
+
+.user-detail--card {
+  margin-bottom: 20px
+}
+
+.user-detail--edit-button {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
