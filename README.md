@@ -87,10 +87,10 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Screenshots
 
-![SignUp Page Screenshot](main_app/static/css/images/signup.png)
-![Detail Page Screenshot](main_app/static/css/images/detail.png)
-![Profile Page Screenshot](main_app/static/css/images/profile.png)
-![Landing Page Screenshot](main_app/static/css/images/landing.png)
+![SignUp Page Screenshot](main_app/static/css/images/signupSS.png)
+![Detail Page Screenshot](main_app/static/css/images/detailSS.png)
+![Profile Page Screenshot](main_app/static/css/images/profileSS.png)
+![Landing Page Screenshot](main_app/static/css/images/landingSS.png)
  
 ## Wireframes
 
@@ -103,13 +103,5 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Unsolved problems/Major Hurdles
 
-There were many major hurdles that we experienced while working on this project, one of them being the set up for our database. We were having issues with the database because the join table, "favorites", was not having its own primary key; and to fix this we went into the migration file and added that as an attribute. Along with that we were also not able to access repeating days in the table, so raw SQL was written into the code to retrieve the information.
-
-Another hurdle we had was having the application layout be the way that we planned it to be. The recipe card, navigation bar, and dashboard had a lot fo trial and error with CSS to have it be designed we had envisioned for it. 
-
-A current unsolved problem that we have is to make the application more responsive to different screen sizes. 
 
 ## Future Development
-
-We want the application to have additional features that allow users to have a more seamless planning process for their meals. We want to add the ability to compile a shopping list consisting of all the ingredients in their weekly planned meals. We also want to add a community component to the application that allows users to communicate and share recipes as well and comment and rate them. Additionally, we want to be able to fetch data directly from the API instead of relying on the seeded information in the database.
-
