@@ -1,5 +1,3 @@
-console.log('ready')
-
 $(document).ready(function(){
     if ($('.event-cards .card').length > 5) {
         $('.event-cards').slick({
