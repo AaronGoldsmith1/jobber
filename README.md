@@ -15,16 +15,18 @@ A site where users can search and register for recruiting events with a profile 
 * jQuery
 
 ## Installation Instructions
-#### 1. Install requirements
+#### 1. Set Up virtual environment
 
-- `npm install`
+- `python3 -m venv .env`
+- `source .env/bin/activate`
 
-#### 2. Create database and seed it
-- `createdb mealplan`
 
-- `sequelize db:migrate`
+#### 2. Install packages from requirements.txt
+- `pip3 install -r requirements.txt`
 
-- `sequelize db:seed:all`
+### 3. Migrate (if it is the first time setting up the database)
+- `python3 manage.py migrate`
+
 
 ## User Stories
 
@@ -85,7 +87,7 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Screenshots
 
-![SigmUp Page Screenshot](main_app/static/css/images/signup.png)
+![SignUp Page Screenshot](main_app/static/css/images/signup.png)
 ![Detail Page Screenshot](main_app/static/css/images/detail.png)
 ![Profile Page Screenshot](main_app/static/css/images/profile.png)
 ![Landing Page Screenshot](main_app/static/css/images/landing.png)
