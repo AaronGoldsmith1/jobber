@@ -14,16 +14,16 @@
 <div class="jumbotron career">
 {% endif %}
   <div class = "container text-center">
-  <h1 class="display-4 category">{{category}}</h1>
+  <h1 class="titles display-4 category">{{category}}</h1>
   </div>
 </div>
 
 <div class="card">
-  <h5 class="card-header text-center">Results for {{category | title}} events</h5>
+  <h5 class="titles card-header text-center">Check out the events below!</h5>
   <div class="card-body">
     <ul class="list-group">
     {% for event in search_results %}
-      <li class="list-group-item">{{event.title}} - {{event.dateTime}} - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
+      <li class="list-group-item"><span class="titles">{{event.title}}</span> - <span class="info">{{event.dateTime}}</span> - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
     {% endfor %}
     </ul>
   </div>
@@ -32,7 +32,7 @@
 
 &nbsp&nbsp
 
-<a type="button" class="btn btn-primary" href="{% url 'home' %}">
+<a type="button" class="info btn btn-primary" href="{% url 'home' %}">
  <i class="far fa-arrow-square-left fa-lg"></i>&nbsp&nbspHome
 </a>
 
