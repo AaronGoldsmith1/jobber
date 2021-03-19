@@ -62,7 +62,7 @@ ul {
   list-style-type: none;
 }
 
-body{
+body {
   background-image: url("./images/meeting.jpeg");
   background-size: cover;
 }
@@ -91,7 +91,8 @@ body{
   border-radius: 0;
 }
 
-.category, .home-style{
+.category,
+.home-style {
   text-transform: uppercase;
   font-family: 'Rubik', 'Regular 400 italic';
 }
@@ -156,7 +157,7 @@ body{
 .upcoming-events .slick-next {
   float: right;
   position: relative;
-  bottom: 3.15em;
+  bottom: 3.9em;
 }
 
 .dropdown-toggle {
@@ -164,8 +165,10 @@ body{
   top: 10px;
 }
 
-.titles, .detail-info{
-  font-family: 'Rubik', sans-serif;;
+.titles,
+.detail-info {
+  font-family: 'Rubik', sans-serif;
+  ;
 }
 
 .info {
