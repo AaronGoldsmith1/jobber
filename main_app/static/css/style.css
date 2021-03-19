@@ -62,6 +62,11 @@ ul {
   list-style-type: none;
 }
 
+body{
+  background-image: url("./images/meeting.jpeg");
+  background-size: cover;
+}
+
 .technology {
   background-image: url("./images/details.jpeg");
   background-size: cover;
@@ -86,8 +91,9 @@ ul {
   border-radius: 0;
 }
 
-.category {
+.category, .home-style{
   text-transform: uppercase;
+  font-family: 'Rubik', 'Regular 400 italic';
 }
 
 .display-4 {
@@ -104,7 +110,7 @@ ul {
 .detail-info {
   font-weight: bolder;
   font-style: italic;
-  color: rgb(53, 49, 48)
+  font-size: 16px;
 }
 
 .slick-arrow:focus {
@@ -156,6 +162,14 @@ ul {
 .dropdown-toggle {
   position: absolute;
   top: 10px;
+}
+
+.titles, .detail-info{
+  font-family: 'Rubik', sans-serif;;
+}
+
+.info {
+  font-family: 'Roboto', sans-serif;
 }
 
 .slick-slide {

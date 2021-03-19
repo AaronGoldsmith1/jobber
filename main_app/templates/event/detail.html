@@ -17,15 +17,15 @@
 <div class="jumbotron career">
 {% endif %}
   <div class = "container text-center">
-  <h1 class="display-4">{{event.title}}</h1>
+  <h1 class="titles display-4">{{event.title}}</h1>
   </div>
 </div>
-<div class="event-details">
-  <p><span class="detail-info">Speaker:</span> {{event.speaker}}</p>
-  <p><span class="detail-info">Date:</span> {{event.dateTime}}</p>  
-  <p><span class="detail-info">Description:</span> <br>{{event.description}}</p>
+<div class="event-details info">
+  <p><span class="detail-info">Speaker: </span> {{event.speaker}}</p>
+  <p><span class="detail-info">Date: </span> {{event.dateTime}}</p>  
+  <p><span class="detail-info">Desciprtion: </span> <br>{{event.description}}</p>
   <hr class="my-4">
-  <p><span class="detail-info">Category:</span> {{event.get_category_display}}</p>
+  <p><span class="detail-info">Category: </span> {{event.get_category_display}}</p>
   <p class="detail-info">{{event.dateTime|naturaltime}}</p>
 <hr>
   {% if is_admin %}
@@ -53,7 +53,7 @@
   Register
 </button>
 {% else %}
-<p>Sign up or Log in to register for event!</p>
+<p class="detail-info">Sign up or Log in to register for event!</p>
 {% endif %}
 <button
   {% if is_registered %}

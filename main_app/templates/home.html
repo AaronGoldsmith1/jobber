@@ -3,58 +3,57 @@
 {% load humanize %}
 {% comment %} {% load static %} {% endcomment %}
 
-<div class="home-panels flex-md-equal w-100 my-md-3 pl-md-3">
-  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-    <div class="my-3 p-3">
-      <h2 class="display-5">Find and Register for Events happening soon!</h2>
-      <p class="lead">Search for events below, or select a category from the dropdown.</p>
+<div class="home home-panels flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="home img-fluid bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="titles home-style my-3 p-3">
+      <h2 class="font display-5">Find and Register for Events happening soon!</h2>
+      <p class="font lead">Search for events below, or select a category from the dropdown.</p>
     </div>
   </div>
 </div>
-  
-<div class="input-group home-input">
-  <ul>
-  <li><form action="" method="POST" class="form-inline my-2 my-lg-0">
-    {% csrf_token %}
-      <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
-      <input value="Submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
-  </form></li>
+    <div class="font input-group home-input">
+      <ul>
+      <li><form action="" method="POST" class="category-input form-inline my-2 my-lg-0">
+        {% csrf_token %}
+          <input id="search-input" name="search_term" class="font form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
+          <input value="Submit" class="info title btn btn-outline-success my-2 my-sm-0" type="submit">
+          <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
+      </form></li>
 
-  <div class="dropdown show dropright">
-    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      View Events By Category
-    </a>
+      <div class="dropdown show dropright">
+        <a class="info category-input btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          View Events By Category
+        </a>
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li>
-        <form action={% url 'events_by_category' 'technology' %} name="categoryForm">
-            {% csrf_token %}
-          <input type="submit" value="Technology" class="dropdown-item"></input>
-        </form>
-      </li>
-      <li>
-        <form action={% url 'events_by_category' 'marketing' %} name="categoryForm">
-            {% csrf_token %}
-          <input type="submit" value="Marketing" class="dropdown-item"></input>
-        </form>
-      </li>
-      <li>
-        <form action={% url 'events_by_category' 'networking' %} name="categoryForm">
-            {% csrf_token %}
-          <input type="submit" value="Networking" class="dropdown-item"></input>
-        </form>
-      </li>
-      <li>
-        <form action={% url 'events_by_category' 'career' %} name="categoryForm">
-            {% csrf_token %}
-          <input type="submit" value="Career" class="dropdown-item"></input>
-        </form>
-      </li>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li>
+            <form action={% url 'events_by_category' 'technology' %} name="categoryForm">
+                {% csrf_token %}
+              <input type="submit" value="Technology" class="dropdown-item"></input>
+            </form>
+          </li>
+          <li>
+            <form action={% url 'events_by_category' 'marketing' %} name="categoryForm">
+                {% csrf_token %}
+              <input type="submit" value="Marketing" class="dropdown-item"></input>
+            </form>
+          </li>
+          <li>
+            <form action={% url 'events_by_category' 'networking' %} name="categoryForm">
+                {% csrf_token %}
+              <input type="submit" value="Networking" class="dropdown-item"></input>
+            </form>
+          </li>
+          <li>
+            <form action={% url 'events_by_category' 'career' %} name="categoryForm">
+                {% csrf_token %}
+              <input type="submit" value="Career" class="dropdown-item"></input>
+            </form>
+          </li>
+        </div>
+      </div>
+      </ul>
     </div>
-  </div>
-  </ul>
-</div>
 
 <div class="container-fluid content-row event-container home-events">
   <div class="row card-group event-cards">
@@ -62,8 +61,8 @@
       <div class="col-sm-4">
         <div class="card home-card">
           <div class="card-body">
-            <h5 class="card-title">{{event.title}}</h5>
-            <p class="card-text">
+            <h5 class="card-title titles">{{event.title}}</h5>
+            <p class="info card-text">
             {{event.description|truncatechars:100}}</p>
           </div>
           <div class="card-footer text-right">
