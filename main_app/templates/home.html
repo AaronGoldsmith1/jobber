@@ -6,22 +6,22 @@
 <div class="home home-panels flex-md-equal w-100 my-md-3 pl-md-3">
   <div class="home img-fluid bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
     <div class="titles home-style my-3 p-3">
-      <h2 class="font display-5">Find and Register for Events happening soon!</h2>
-      <p class="font lead">Search for events below, or select a category from the dropdown.</p>
+      <h2 class="display-5">Find and Register for Events happening soon!</h2>
+      <p class="lead">Search for events below, or select a category from the dropdown.</p>
     </div>
   </div>
 </div>
-    <div class="font input-group home-input">
+    <div class="input-group home-input">
       <ul>
       <li><form action="" method="POST" class="category-input form-inline my-2 my-lg-0">
         {% csrf_token %}
-          <input id="search-input" name="search_term" class="font form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
-          <input value="Submit" class="info title btn btn-outline-success my-2 my-sm-0" type="submit">
+          <input id="search-input" name="search_term" class="form-control mr-sm-2" type="search" placeholder="{{placeholder}}" aria-label="Search">
+          <input value="Submit" class="info title btn btn-outline-info my-2 my-sm-0" type="submit">
           <a href="{% url 'home' %}" style="visibility:{{visibility}}">Clear</a>
       </form></li>
 
       <div class="dropdown show dropright">
-        <a class="info category-input btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="info category-input btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           View Events By Category
         </a>
 
@@ -66,7 +66,7 @@
             {{event.description|truncatechars:100}}</p>
           </div>
           <div class="card-footer text-right">
-            <small class="text-muted"><a href={% url 'event_detail' event.id %} class="btn btn-primary">Event Details</a></small>
+            <small class="text-muted"><a href={% url 'event_detail' event.id %} class="btn btn-outline-info">Event Details</a></small>
           </div>
         </div>
       </div>
