@@ -62,22 +62,28 @@ ul {
   list-style-type: none;
 }
 
-.technology{
+.technology {
   background-image: url("./images/details.jpeg");
   background-size: cover;
+  border-radius: 0;
 }
 
 .marketing {
   background-image: url("./images/marketing.png");
   background-size: cover;
+  border-radius: 0;
 }
+
 .networking {
   background-image: url("./images/networking.png");
   background-size: cover;
+  border-radius: 0;
 }
+
 .career {
   background-image: url("./images/career.jpeg");
   background-size: cover;
+  border-radius: 0;
 }
 
 .category {
@@ -85,7 +91,7 @@ ul {
 }
 
 .display-4 {
-  font-weight:700;
+  font-weight: 700;
   font-style: italic;
   color: #0f1b27;
 }
@@ -150,4 +156,9 @@ ul {
 .dropdown-toggle {
   position: absolute;
   top: 10px;
+}
+
+.slick-slide {
+  outline: none;
+  border: none;
 }
