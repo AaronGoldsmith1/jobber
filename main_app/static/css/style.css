@@ -66,22 +66,29 @@ body{
   background-image: url("./images/meeting.jpeg");
   background-size: cover;
 }
-.technology{
+
+.technology {
   background-image: url("./images/details.jpeg");
   background-size: cover;
+  border-radius: 0;
 }
 
 .marketing {
   background-image: url("./images/marketing.png");
   background-size: cover;
+  border-radius: 0;
 }
+
 .networking {
   background-image: url("./images/networking.png");
   background-size: cover;
+  border-radius: 0;
 }
+
 .career {
   background-image: url("./images/career.jpeg");
   background-size: cover;
+  border-radius: 0;
 }
 
 .category, .home-style{
@@ -90,7 +97,7 @@ body{
 }
 
 .display-4 {
-  font-weight:700;
+  font-weight: 700;
   font-style: italic;
   color: #0f1b27;
 }
@@ -163,4 +170,9 @@ body{
 
 .info {
   font-family: 'Roboto', sans-serif;
+}
+
+.slick-slide {
+  outline: none;
+  border: none;
 }
