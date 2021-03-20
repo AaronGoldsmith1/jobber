@@ -103,5 +103,14 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Unsolved problems/Major Hurdles
 
+For the user stories:
+* See event descriptions truncated to 1000 characters max, with a link to view more - do not display event details on the homepage. A user should have to click into the event to find out more information.
+* See a relative event date, e.g. "2 days from now".
+At first it seemed to require using multiple methods and logic to complete them but as I researched more into it, I found out that Django has a lot of packages and built in methods that can be used. I found the humanize package that Django has to offer which handles the dateTime property in many different ways and can transform them to be readable in the way that the developer wants it to be. I really enjoyed diving deeper into the documentation and finding already created methods to elevate the application.
 
 ## Future Development
+
+For future development of the application, adding a 
+photo component to it will bring the site more color and user interactions. I would like to add a feature for photos to be uploaded by users of the event or to add a comment section to the event for any questions or comments they have about the event before and after it. 
+
+An additional feature could also be to have the page more accessible to admins and allow them to view more details about an event and users' information directly on the application. 
