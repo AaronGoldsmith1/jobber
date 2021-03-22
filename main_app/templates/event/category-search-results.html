@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if category == 'technology' %}
+<div class="jumbotron technology">
+{% endif %}
+{% if category == 'marketing' %}
+<div class="jumbotron marketing">
+{% endif %}
+{% if category == 'networking' %}
+<div class="jumbotron networking">
+{% endif %}
+{% if category == 'career' %}
+<div class="jumbotron career">
+{% endif %}
+  <div class = "container text-center">
+  <h1 class="titles display-4 category">{{category}}</h1>
+  </div>
+</div>
+
+<div class="card">
+  <h5 class="titles card-header text-center">Check out the events below!</h5>
+  <div class="card-body">
+    <ul class="list-group">
+    {% for event in search_results %}
+      <li class="list-group-item"><span class="titles">{{event.title}}</span> - <span class="info">{{event.dateTime}}</span> - <a href="{% url 'event_detail' event.id %}">Details</a> </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+<br>
+
+&nbsp&nbsp
+
+<a type="button" class="info btn btn-primary" href="{% url 'home' %}">
+ <i class="far fa-arrow-square-left fa-lg"></i>&nbsp&nbspHome
+</a>
+
+{% endblock content %}

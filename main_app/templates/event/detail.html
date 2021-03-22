@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load humanize %}
+
+
+
+{% if event.category == 'T' %}
+<div class="jumbotron technology">
+{% endif %}
+{% if event.category == 'M' %}
+<div class="jumbotron marketing">
+{% endif %}
+{% if event.category == 'N' %}
+<div class="jumbotron networking">
+{% endif %}
+{% if event.category == 'C' %}
+<div class="jumbotron career">
+{% endif %}
+  <div class = "container text-center">
+  <h1 class="titles display-4">{{event.title}}</h1>
+  </div>
+</div>
+<div class="event-details info">
+  <p><span class="detail-info">Speaker: </span> {{event.speaker}}</p>
+  <p><span class="detail-info">Date: </span> {{event.dateTime}}</p>  
+  <p><span class="detail-info">Desciprtion: </span> <br>{{event.description}}</p>
+  <hr class="my-4">
+  <p><span class="detail-info">Category: </span> {{event.get_category_display}}</p>
+  <p class="detail-info">{{event.dateTime|naturaltime}}</p>
+<hr>
+  {% if is_admin %}
+    <p><span class="detail-info">Total Attendees:</span> {{total_attendees}}</p>
+  {% endif %}
+
+  <hr class="my-4">
+</div>
+  <div class = "container text-center">
+    {% if is_logged_in %}
+  <button
+  {% if is_registered %}
+    style="display:none"
+  {% endif %} 
+  data-token={{ csrf_token }}
+  data-eventId={{event.id}}
+  data-userId={{user_id}}
+  id="register-button" 
+  type="button" 
+  class="btn btn-info" 
+  data-toggle="modal" 
+  aria-pressed="false" 
+  autocomplete="off"
+  data-target="#register-modal">
+  Register
+</button>
+{% else %}
+<p class="detail-info">Sign up or Log in to register for event!</p>
+{% endif %}
+<button
+  {% if is_registered %}
+    style="display:initial"
+  {% endif %} 
+  id="unregister-trigger"
+  type="button" 
+  class="btn btn-danger" 
+  data-toggle="modal" 
+  data-target="#unregister-modal">
+    Unregister
+  </button>
+  </div>
+
+
+
+<div class="modal fade" id="unregister-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Unregister for {{event.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to cancel your registration?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button
+          data-token={{ csrf_token }}
+          data-eventId={{event.id}}
+          data-userId={{user_id}} 
+          data-dismiss="modal"
+          id="unregister-button" 
+          type="button" 
+          class="btn btn-info">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thank you for registering for {{event.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Hope you enjoy the event!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

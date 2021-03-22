@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load humanize %}
+
+{% for message in messages %}
+  <div class="alert alert-success">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+{% endfor %}
+
+
+<div class="card user-detail--card">
+  <h5 class="titles card-header text-center">User Info</h5>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class=" list-group-item"><span class=" user-detail ">User Name:</span> {{username}} </li>
+      <li class=" list-group-item"><span class="titles user-detail">Join Date:</span> {{join_date}}</li>
+      <li class="list-group-item"><span class="titles user-detail">Events Attended:</span> {{events_attended}}</li>
+    </ul>
+  </div>
+</div>
+
+<div style="text-align:right; padding-right: 25px;">
+<button  type="button" class="info btn btn-info user-detail--edit-button" data-toggle="modal" data-target="#exampleModal">
+    Edit User Information
+</button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="titles modal-title" id="exampleModalLabel">Edit information for {{username}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="" method="POST"> 
+            {% csrf_token %}
+            <div class="modal-body titles">
+              User Name: <input type="text"  class ="form-control" id="username" name="username" value="{{username}}">
+              <br>
+              Update Password: <input type="password" id="password" class="form-control" name="password" value="">
+            </div>
+            <div class=" modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <input name="submit" type="submit" class="btn btn-info">
+            </div>        
+          </form>
+      </div>
+    </div>
+</div>
+
+<h3 class="text-center titles">Upcoming Events</h3>
+<div class="row event-cards">
+{% if upcoming.count %}
+  {% for event in upcoming %}
+    <div class="col-sm-3">
+      <div class=" card">
+        <div class=" card-body">
+          <h5 class="card-title titles">{{event.title}}</h5>
+          <p class="card-text info">
+          {{event.description|truncatechars:100}}</p>
+          <p class="detail-info">{{event.dateTime|naturaltime}}</p>
+          <a href={% url 'event_detail' event.id %} class="btn btn-outline-info info">Event Details</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  {% else %}
+  <p class="event-details detail-info info">No upcoming events</p>
+  {% endif %}
+</div>
+
+
+<h3 class="titles text-center">Past Events</h3>
+<div class="row event-cards past-events">
+{% if passed.count %}
+  {% for event in passed %}
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="titles card-title">{{event.title}}</h5>
+          <p class="info card-text">
+          {{event.description|truncatechars:100}}</p>
+          <p class="detail-info">{{event.dateTime|naturaltime}}</p>
+          <a href={% url 'event_detail' event.id %} class="info btn btn-outline-info">Event Details</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  {% else %}
+  <p class="event-details detail-info info">No past events</p>
+  {% endif %}
+</div>
+
+{% endblock content %}

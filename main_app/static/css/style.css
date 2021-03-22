@@ -1,0 +1,178 @@
+#search-input {
+  width: 400px;
+}
+
+#unregister-trigger {
+  display: none;
+}
+
+.event-container {
+  position: relative;
+  top: 300px;
+}
+
+.home-card {
+  height: 309px;
+}
+
+.home-input {
+  position: relative;
+  top: 250px;
+}
+
+.home-panels {
+  margin-bottom: -175px !important
+}
+
+.jobber-img {
+  width: 40%;
+}
+
+.past-events {
+  margin-bottom: 20px
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #212529;
+}
+
+.home-footer {
+  bottom: -150px;
+  z-index: 2;
+}
+
+.user-detail {
+  font-weight: bold;
+}
+
+.user-detail--card {
+  margin-bottom: 20px
+}
+
+.user-detail--edit-button {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body{
+  background-image: url("./images/meeting.jpeg");
+  background-size: cover;
+}
+
+.technology {
+  background-image: url("./images/tech.jpeg");
+  background-size: cover;
+  border-radius: 0;
+}
+
+.marketing {
+  background-image: url("./images/marketing.jpeg");
+  background-size: cover;
+  border-radius: 0;
+}
+
+.networking {
+  background-image: url("./images/networking.png");
+  background-size: cover;
+  border-radius: 0;
+}
+
+.career {
+  background-image: url("./images/career.jpeg");
+  background-size: cover;
+  border-radius: 0;
+}
+
+.category, .home-style{
+  text-transform: uppercase;
+  font-family: 'Rubik', 'Regular 400 italic';
+}
+
+.display-4 {
+  font-weight: 700;
+  font-style: italic;
+  color: #0f1b27;
+}
+
+.event-details {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.detail-info {
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.slick-arrow:focus {
+  outline: none;
+}
+
+.slick-arrow {
+  background: transparent;
+  color: gray;
+  z-index: 1;
+}
+
+.home-events .slick-prev {
+  position: relative;
+  top: 3.5em;
+  left: 2px;
+}
+
+.home-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.95em;
+}
+
+.past-events .slick-prev {
+  position: relative;
+  top: 3.5em;
+  left: 2px;
+}
+
+.past-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.1em;
+}
+
+.upcoming-events .slick-prev {
+  position: relative;
+  top: 2.6em;
+  left: 2px;
+}
+
+.upcoming-events .slick-next {
+  float: right;
+  position: relative;
+  bottom: 3.15em;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  top: 10px;
+}
+
+.titles, .detail-info{
+  font-family: 'Rubik', sans-serif;;
+}
+
+.info {
+  font-family: 'Roboto', sans-serif;
+}
+
+.slick-slide {
+  outline: none;
+  border: none;
+}
