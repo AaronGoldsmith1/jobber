@@ -86,7 +86,6 @@ A site where users can search and register for recruiting events with a profile 
     * See the number of registrants an event has on the event's "show" page.
 
 ## Screenshots
-![About Page Screenshot](main_app/static/css/images/aboutSS.png)
 ![SignUp Page Screenshot](main_app/static/css/images/signupSS.png)
 ![Detail Page Screenshot](main_app/static/css/images/detailSS.png)
 ![Profile Page Screenshot](main_app/static/css/images/profileSS.png)
