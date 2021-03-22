@@ -87,15 +87,21 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Screenshots
 ![SignUp Page Screenshot](main_app/static/css/images/signupSS.png)
+
 ![Detail Page Screenshot](main_app/static/css/images/detailSS.png)
+
 ![Profile Page Screenshot](main_app/static/css/images/profileSS.png)
+
 ![Landing Page Screenshot](main_app/static/css/images/landingSS.png)
  
 ## Wireframes
 
 ![Wireframe of SigmUp Page Screenshot](main_app/static/css/images/signup.png)
+
 ![Wireframe of Detail Page Screenshot](main_app/static/css/images/detail.png)
+
 ![Wireframe of Profile Page Screenshot](main_app/static/css/images/profile.png)
+
 ![Wireframe of Landing Page Screenshot](main_app/static/css/images/landing.png)
 
 
