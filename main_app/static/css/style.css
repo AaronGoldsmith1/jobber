@@ -68,13 +68,13 @@ body{
 }
 
 .technology {
-  background-image: url("./images/details.jpeg");
+  background-image: url("./images/tech.jpeg");
   background-size: cover;
   border-radius: 0;
 }
 
 .marketing {
-  background-image: url("./images/marketing.png");
+  background-image: url("./images/marketing.jpeg");
   background-size: cover;
   border-radius: 0;
 }

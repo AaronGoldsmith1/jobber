@@ -87,10 +87,10 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Screenshots
 
-![SignUp Page Screenshot](main_app/static/css/images/signup.png)
-![Detail Page Screenshot](main_app/static/css/images/detail.png)
-![Profile Page Screenshot](main_app/static/css/images/profile.png)
-![Landing Page Screenshot](main_app/static/css/images/landing.png)
+![SignUp Page Screenshot](main_app/static/css/images/signupSS.png)
+![Detail Page Screenshot](main_app/static/css/images/detailSS.png)
+![Profile Page Screenshot](main_app/static/css/images/profileSS.png)
+![Landing Page Screenshot](main_app/static/css/images/landingSS.png)
  
 ## Wireframes
 
@@ -103,13 +103,14 @@ A site where users can search and register for recruiting events with a profile 
 
 ## Unsolved problems/Major Hurdles
 
-There were many major hurdles that we experienced while working on this project, one of them being the set up for our database. We were having issues with the database because the join table, "favorites", was not having its own primary key; and to fix this we went into the migration file and added that as an attribute. Along with that we were also not able to access repeating days in the table, so raw SQL was written into the code to retrieve the information.
-
-Another hurdle we had was having the application layout be the way that we planned it to be. The recipe card, navigation bar, and dashboard had a lot fo trial and error with CSS to have it be designed we had envisioned for it. 
-
-A current unsolved problem that we have is to make the application more responsive to different screen sizes. 
+For the user stories:
+* See event descriptions truncated to 1000 characters max, with a link to view more - do not display event details on the homepage. A user should have to click into the event to find out more information.
+* See a relative event date, e.g. "2 days from now".
+At first it seemed to require using multiple methods and logic to complete them but as I researched more into it, I found out that Django has a lot of packages and built in methods that can be used. I found the humanize package that Django has to offer which handles the dateTime property in many different ways and can transform them to be readable in the way that the developer wants it to be. I really enjoyed diving deeper into the documentation and finding already created methods to elevate the application.
 
 ## Future Development
 
-We want the application to have additional features that allow users to have a more seamless planning process for their meals. We want to add the ability to compile a shopping list consisting of all the ingredients in their weekly planned meals. We also want to add a community component to the application that allows users to communicate and share recipes as well and comment and rate them. Additionally, we want to be able to fetch data directly from the API instead of relying on the seeded information in the database.
+For future development of the application, adding a 
+photo component to it will bring the site more color and user interactions. I would like to add a feature for photos to be uploaded by users of the event or to add a comment section to the event for any questions or comments they have about the event before and after it. 
 
+An additional feature could also be to have the page more accessible to admins and allow them to view more details about an event and users' information directly on the application. 
