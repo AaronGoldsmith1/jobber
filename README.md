@@ -10,6 +10,7 @@ A site where users can search and register for recruiting events with a profile 
 * HTML
 * CSS
 * Javascript
+* Python
 * Bootstrap
 * Django
 * jQuery
